@@ -1,0 +1,184 @@
+﻿Fortran
+Spring
+Hibernate
+JSF
+JSP
+JPA
+Eclipse
+IntelliJ | IntelliJ\. | IntelliJ\,
+NetBeans
+SOAP
+_REST_ | _REST\. | _REST\, | RESTful
+JBoss
+Jetty
+TomCat
+Glassfish
+Wildfly
+HTML
+CSS
+Jenkin
+JavaScript | ECMAScript | _JS_ | _JS\.
+Maven
+_Git_ | _Git\, | _Git\.
+Angular
+EJB
+Java EE | J2EE | JEE
+JQuery
+Scrum
+Kanban
+iReport
+Selenium
+JUnit
+Mockito
+NodeJS | Node\.JS | _Node_ | _Node\. | _Node\,
+MySQL
+Oracle
+Gradle
+Design Pattern
+Linux
+MVC
+WebLogic
+ITIL
+Struts
+JMS
+XML
+XStream
+XSLT
+TDD
+BDD
+Postgre
+AWS | EC2 | _S3_ | _S3\. | _S3\, | Route 53 | SNS | Simple Notification Service | KMS | Key Management Service
+Docker
+NoSQL
+Grail
+Groovy
+MongoDB
+PHP
+Python
+C# | \.NET
+SQL Server | MS SQL | MSSQL | Microsoft SQL | SQLServer
+Kotlin
+Clojure
+_Scala_ | _Scala\, | _Scala\.
+_Ant_ | _Ant\. | _Ant\,
+_React_ | _React\. | _React\,
+Redux
+Swift
+Android
+_iOS_ | _iOS\. | _iOS\,
+Objective-C | Objective C | ObjectiveC
+Perl
+PowerShell
+Delphi
+COBOL
+Mobile
+SQLite
+Redis
+DevOps
+Elasticsearch
+MariaDB
+Neo4J
+DynamoDB
+Memcached
+VRaptor
+_MEAN_ | _MEAN\. | _MEAN\,
+JSON
+JAX
+WSDL
+_Java_ | _Java\. | _Java\,
+Rabbit
+SQS
+SVN
+Ruby
+_Go_ | _Go\. | _Go\, | Golang | Go\-lang
+CodeIgniter
+Laravel
+Zend
+CakePHP | _Cake_ | _Cake\. | _Cake\,
+Django
+Flask
+JSTL
+CDI
+JAAS
+WebSocket
+Play Framework | Play!
+_ASP_ | _ASP\, | ASP\.NET | ASP NET
+ActiveMQ
+_Camel_ | _Camel\. | _Camel\,
+_C_ | _C\. | _C\, | C\+\+
+_Entity_ | _Entity\, | _Entity.
+Flexbox
+Bootstrap
+TypeScript
+PWA | Progressive Web App
+Algoritmo
+Cordova
+TFS | Team Foundation Service
+Xamarin
+Azure
+Ionic
+_Unity_ | _Unity\. | _Unity\,
+PL/SQL | PL SQL | PLSQL
+Certificação | Certificado | Certified | Certification
+Machine Learning | Inteligência Artificial | _IA_ | _AI_ | Aprendizado de Máquina
+Arduino
+Primeface
+Facelets
+Backbone
+_Ember_ | _Ember\. | _Ember\, | EmberJS
+Aurelia
+Polymer
+D3
+Highcharts
+_Ext_ | _Ext\. | _Ext\, | ExtJS
+YUI
+Underscore
+Mustache
+Mocha
+QUnit
+Tape
+Knockout
+OpenUI
+SproutCore
+Mithril
+Polymar
+Meteor
+_Vue_ | _Vue\. | _Vue\,
+Grunt
+Jasmine
+_Sass_ | _Sass\. | _Sass\,
+_Less_ | _Less\. | _Sass\,
+Gulp
+WebPack
+Ajax
+Flash
+Photoshop | Photo shop
+CorelDraw
+Stylus
+Wordpress
+Ilustrator
+Sketch
+Bower
+NGINX
+_SEO_ | _SEO\. | _SEO\,
+_UX_ | _UX\. | _UX\,
+_XP_ | _XP\. | _XP\,
+_Express_
+Firebase
+oAuth
+Clipper
+_Rust_ | _Rust\. | _Rust\,
+_R_ | _R\. | _R\,
+Julia
+Erlang
+Dart
+Elixir
+Smalltalk
+F#
+Haskell
+LISP
+Spark
+Hadoop
+LDAP
+Active Directory | _AD_ | _AD\. | _AD\,
+Japanese
