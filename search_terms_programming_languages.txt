@@ -1,0 +1,34 @@
+﻿IGNORE_THIS_LINE
+JavaScript|ECMAScript|JS*|ES5|ES6
+Java*
+Python
+C#|.NET*
+PHP
+C*
+C++
+TypeScript
+Ruby
+Swift
+Assembly
+Go*|Golang|Go-lang
+Objective-C|Objective C
+VB.NET|VBNET|VB NET|Visual Basic
+R*
+Matlab
+VBA
+Kotlin
+Scala*
+Groovy
+Perl
+Cobol
+CoffeeScript
+Lua*
+Erlang
+Haskell
+Ocaml
+Rust
+F#
+Clojure
+Julia
+Dart
+Elixir

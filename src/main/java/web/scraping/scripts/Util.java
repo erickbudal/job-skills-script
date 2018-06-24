@@ -47,8 +47,8 @@ public class Util {
 
         try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
             String line;
-            while((line = reader.readLine()) != null){
-                searchTerms.put(line.trim(), 0);
+            while((line = reader.readLine()) != null) {
+                searchTerms.put(line, 0);
             }
         }
         catch (Exception e) {
@@ -59,7 +59,79 @@ public class Util {
         return searchTerms;
     }
 
-    public static String getFindTermRegex(String term){
-        return (".*(" + term.toLowerCase().trim().replaceAll("\\s*[|;]\\s*", "|") + ").*").replaceAll("_", " ");
+    public static String getFindTermRegex(String termsLine){
+        List<String> improvedLineTerms = new ArrayList<>();
+
+        for(String term : termsLine.toLowerCase().split("\\|")) {
+            term = term.replaceAll("\\.", "\\\\.")
+                       .replaceAll("\\+", "\\\\+")
+                       .replaceAll("\\[", "\\\\[")
+                       .replaceAll("\\]", "\\\\]")
+                       .replaceAll("\\$", "\\\\$")
+                       .replaceAll("\\^", "\\\\^")
+                       .replaceAll("\\?", "\\\\?")
+                       .replaceAll("\\(", "\\\\(")
+                       .replaceAll("\\)", "\\\\)");
+
+            if(term.contains("*")) {
+                term = term.replaceAll("\\*", "");
+
+                improvedLineTerms.add(" " + term + " ");
+
+                improvedLineTerms.add(" " + term + ",");
+                improvedLineTerms.add("," + term + ",");
+                improvedLineTerms.add(";" + term + ",");
+                improvedLineTerms.add("-" + term + ",");
+                improvedLineTerms.add("/" + term + ",");
+                improvedLineTerms.add("\\(" + term + ",");
+
+
+                improvedLineTerms.add(" " + term + ";");
+                improvedLineTerms.add("," + term + ";");
+                improvedLineTerms.add(";" + term + ";");
+                improvedLineTerms.add("-" + term + ";");
+                improvedLineTerms.add("/" + term + ";");
+                improvedLineTerms.add("\\(" + term + ";");
+
+                improvedLineTerms.add(" " + term + "\\.");
+                improvedLineTerms.add("," + term + "\\.");
+                improvedLineTerms.add(";" + term + "\\.");
+                improvedLineTerms.add("-" + term + "\\.");
+                improvedLineTerms.add("/" + term + "\\.");
+                improvedLineTerms.add("\\(" + term + "\\.");
+
+                improvedLineTerms.add(" " + term + "\\(");
+                improvedLineTerms.add("," + term + "\\(");
+                improvedLineTerms.add(";" + term + "\\(");
+                improvedLineTerms.add("-" + term + "\\(");
+                improvedLineTerms.add("/" + term + "\\(");
+                improvedLineTerms.add("\\(" + term + "\\(");
+
+                improvedLineTerms.add(" " + term + "\\-");
+                improvedLineTerms.add("," + term + "\\-");
+                improvedLineTerms.add(";" + term + "\\-");
+                improvedLineTerms.add("-" + term + "\\-");
+                improvedLineTerms.add("/" + term + "\\-");
+                improvedLineTerms.add("\\(" + term + "\\-");
+
+                improvedLineTerms.add(" " + term + "/");
+                improvedLineTerms.add("," + term + "/");
+                improvedLineTerms.add(";" + term + "/");
+                improvedLineTerms.add("-" + term + "/");
+                improvedLineTerms.add("/" + term + "/");
+                improvedLineTerms.add("\\(" + term + "/");
+            }
+            else {
+                improvedLineTerms.add(term);
+            }
+        }
+
+        StringBuilder improvedLine = new StringBuilder(improvedLineTerms.get(0));
+
+        for(int i=1; i<improvedLineTerms.size(); i++) {
+            improvedLine.append("|").append(improvedLineTerms.get(i));
+        }
+
+        return ".*(" + improvedLine.toString() + ").*";
     }
 }

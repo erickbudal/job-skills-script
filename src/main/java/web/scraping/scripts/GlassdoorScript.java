@@ -13,22 +13,21 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 
 public class GlassdoorScript {
+    private String inputFilePath;
+    private String outputFilePath;
+    private String searchKeyword;
+    private int locationId; //1 = United States; 2 = United Kingdom; 3 = Canada; 36 = Brazil; 96 = Germany; 123 = Japan;
 
-    private static final int WAIT_TIME_PER_ANNOUNCEMENT = 0;
-    private static final int WAIT_TIME_PER_X_ANNOUNCEMENTS = 90000; //1.5 minute
-
-    //=========================== PARAMS ===========================
-
-    private String inputFilePath = "search_terms.txt";
-    private String outputFilePath = "glassdoor_developer.csv";
-    private String searchKeyword = "developer";
-    private int locationId = 1; //1 = United States  36 = Brazil  123 = Japan
-
-    //==============================================================
+    public GlassdoorScript(String inputFilePath, String outputFilePath, String searchKeyword, int locationId) {
+        this.inputFilePath = inputFilePath;
+        this.outputFilePath = outputFilePath;
+        this.searchKeyword = searchKeyword;
+        this.locationId = locationId;
+    }
 
     public void start() {
-        String initialURL = "https://www.glassdoor.com/Job/jobs.htm?suggestCount=0&suggestChosen=false&clickSource=searchBtn&typedKeyword=%s&sc.keyword=%s&locT=N&locId=%s&jobType=";
-        final int TOTAL_PAGES = 30; //Max page possible is 30 because of a bug of glassdoor
+        String initialURL;
+        final int TOTAL_PAGES = 30; //Max possible page is 30 because of a bug of Glassdoor
         int jobCounter = 0;
         int exceptions = 0;
         String jobListUrl;
@@ -37,7 +36,7 @@ public class GlassdoorScript {
         searchKeyword = searchKeyword.toLowerCase().replace(" ", "+");
 
         try {
-            initialURL = "https://www.glassdoor.com/Job/jobs.htm?suggestCount=0&suggestChosen=false&clickSource=searchBtn&typedKeyword=developer&sc.keyword=developer&locT=N&locId=123&jobType=";
+            initialURL = "https://www.glassdoor.com/Job/jobs.htm?suggestCount=0&suggestChosen=false&clickSource=searchBtn&typedKeyword=" + searchKeyword + "&sc.keyword=" + searchKeyword + "&locT=N&locId=" + locationId + "&jobType=";
             Document jobListInitialPage = Jsoup.connect(initialURL).get();
             String selector = "#FooterPageNav > div > ul > li:nth-child(3) > a";
             String url = "https://www.glassdoor.com" + jobListInitialPage.select(selector).attr("href");
@@ -53,11 +52,12 @@ public class GlassdoorScript {
 
         for (int i = 1; i <= TOTAL_PAGES; i++) {
             try {
-                System.out.println("Actual page: " + i + "/" + TOTAL_PAGES);
+                System.out.println("Current page: " + i + "/" + TOTAL_PAGES);
 
                 Document jobListPage = Jsoup.connect(String.format(jobListUrl, i)).get();
+                System.out.println("    " + jobListPage.location());
 
-                for (int j = 0; j < 30; j++) { //Glassdoor shows 30 jobs per page
+                for (int j = 1; j < 30; j++) {
                     String selector = "#MainCol > div > ul > li:nth-child(" + (j + 1) + ") > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > a";
                     Element linkTag = jobListPage.select(selector).get(0);
                     String jobUrl = linkTag.attr("href").replace("amp;", "");
@@ -65,7 +65,7 @@ public class GlassdoorScript {
 
                     String jobDescription;
                     try {
-                        jobDescription = jobPage.getElementsByClass("jobDescriptionContent desc").get(0).text().toLowerCase();
+                        jobDescription = jobPage.getElementsByClass("jobDescriptionContent desc module pad noMargBot").get(0).text().toLowerCase();
                     } catch (Exception ex) {
                         System.out.println("    This job announcement is not from Glassdoor. It will be ignored. " + jobPage.location());
                         continue;
@@ -75,25 +75,18 @@ public class GlassdoorScript {
                     if(jobTitleTag.size() == 0){
                         jobTitleTag = jobPage.getElementsByClass("noMargTop margBotSm strong");
                     }
+
                     System.out.println("    #" + (jobCounter + 1) + " " + jobTitleTag.get(0).text() + " (" + jobPage.location() + ")");
 
-                    for (String term : searchTerms.keySet()) {
-                        String regexFindTerm = Util.getFindTermRegex(term);
+                    for (String termsLine : searchTerms.keySet()) {
+                        String regexFindTerm = Util.getFindTermRegex(termsLine);
                         if (jobDescription.matches(regexFindTerm)) {
-                            searchTerms.put(term, searchTerms.get(term) + 1);
-                            System.out.println("        Found " + term);
+                            searchTerms.put(termsLine, searchTerms.get(termsLine) + 1);
+                            //System.out.println("        Found " + termsLine);
                         }
                     }
 
                     jobCounter++;
-
-                    if(jobCounter % 150 == 0){
-                        System.out.println("\nWaiting " + WAIT_TIME_PER_X_ANNOUNCEMENTS + " milliseconds to continue...\n");
-                        Thread.sleep(WAIT_TIME_PER_X_ANNOUNCEMENTS);
-                    }
-                    else{
-                        Thread.sleep(WAIT_TIME_PER_ANNOUNCEMENT);
-                    }
                 }
 
             }
@@ -119,6 +112,7 @@ public class GlassdoorScript {
             writer.write("\nDate:;" + todayDate.toString());
             writer.write("\nLocationID:;" + locationId);
         } catch (Exception e) {
+            exceptions++;
             e.printStackTrace();
         }
 
@@ -127,19 +121,4 @@ public class GlassdoorScript {
         System.out.println("=====================================\n");
     }
 
-    public void setInputFilePath(String inputFilePath) {
-        this.inputFilePath = inputFilePath;
-    }
-
-    public void setOutputFilePath(String outputFilePath) {
-        this.outputFilePath = outputFilePath;
-    }
-
-    public void setSearchKeyword(String searchKeyword) {
-        this.searchKeyword = searchKeyword;
-    }
-
-    public void setLocationId(int locationId) {
-        this.locationId = locationId;
-    }
 }

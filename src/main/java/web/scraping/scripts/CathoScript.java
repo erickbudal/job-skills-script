@@ -13,17 +13,15 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 
 public class CathoScript {
+    private String inputFilePath;
+    private String outputFilePath;
+    private String searchKeyword;
 
-    private static final int WAIT_TIME_PER_ANNOUNCEMENT = 0;
-    private static final int WAIT_TIME_PER_X_ANNOUNCEMENTS = 0;
-
-    //=========================== PARAMS ===========================
-
-    private String inputFilePath = "search_terms.txt";
-    private String outputFilePath = "catho_java.csv";
-    private String searchKeyword = "desenvolvedor";
-
-    //===============================================================
+    public CathoScript(String inputFilePath, String outputFilePath, String searchKeyword) {
+        this.inputFilePath = inputFilePath;
+        this.outputFilePath = outputFilePath;
+        this.searchKeyword = searchKeyword;
+    }
 
     public void start() {
 
@@ -31,7 +29,7 @@ public class CathoScript {
         String jobsListURL = "https://www.catho.com.br/vagas/?q=%s&page=";
         int exceptions = 0;
         int jobCounter = 0;
-        int actualJob = 1;
+        int currentJob = 1;
         int totalPages;
 
         jobsListURL = String.format(jobsListURL, searchKeyword.replaceAll(" ", "+"));
@@ -50,7 +48,7 @@ public class CathoScript {
 
         for (int i = 1; i <= totalPages; i++) {
             try {
-                System.out.println("Actual page: " + i);
+                System.out.println("Current page: " + i);
 
                 Document jobListPage = Jsoup.connect(jobsListURL + i).get();
                 Elements jobVacanciesTags = jobListPage.getElementById("listagemVagas").getElementsByTag("li");
@@ -66,28 +64,22 @@ public class CathoScript {
                     Document jobPage = Jsoup.connect(jobPageURL).get();
                     String jobTitle = jobPage.getElementById("anchorTituloVaga").text();
 
-                    System.out.println("    #" + (actualJob++) + " " + jobTitle + " (" + jobPage.location() + ")");
+                    System.out.println("    #" + (currentJob++) + " " + jobTitle + " (" + jobPage.location() + ")");
 
                     Element jobDescriptionTag = jobPage.getElementById("descricao-da-vaga").getElementsByTag("p").get(0);
                     String jobDescription = jobDescriptionTag.text().toLowerCase();
 
-                    for (String term : searchTerms.keySet()) {
-                        String regexFindTerm = Util.getFindTermRegex(term);
+                    for (String termsLine : searchTerms.keySet()) {
+
+                        String regexFindTerm = Util.getFindTermRegex(termsLine);
+
                         if (jobDescription.matches(regexFindTerm) || jobTitle.matches(regexFindTerm)) {
-                            searchTerms.put(term, searchTerms.get(term) + 1);
-                            System.out.println("        Found " + term);
+                            searchTerms.put(termsLine, searchTerms.get(termsLine) + 1);
+                            System.out.println("        Found " + termsLine);
                         }
                     }
 
                     jobCounter++;
-
-                    if(jobCounter % 150 == 0){
-                        System.out.println("\nWaiting " + WAIT_TIME_PER_X_ANNOUNCEMENTS + " milliseconds to continue...\n");
-                        Thread.sleep(WAIT_TIME_PER_X_ANNOUNCEMENTS);
-                    }
-                    else{
-                        Thread.sleep(WAIT_TIME_PER_ANNOUNCEMENT);
-                    }
                 }
             }
             catch (Exception ex){
@@ -119,15 +111,4 @@ public class CathoScript {
         System.out.println("=====================================\n");
     }
 
-    public void setInputFilePath(String inputFilePath) {
-        this.inputFilePath = inputFilePath;
-    }
-
-    public void setOutputFilePath(String outputFilePath) {
-        this.outputFilePath = outputFilePath;
-    }
-
-    public void setSearchKeyword(String searchKeyword) {
-        this.searchKeyword = searchKeyword;
-    }
 }

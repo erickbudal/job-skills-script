@@ -1,14 +1,14 @@
-﻿Fortran
+﻿IGNORE_THIS_LINE
 Spring
 Hibernate
 JSF
 JSP
 JPA
 Eclipse
-IntelliJ | IntelliJ\. | IntelliJ\,
+IntelliJ
 NetBeans
 SOAP
-_REST_ | _REST\. | _REST\, | RESTful
+REST*|RESTful
 JBoss
 Jetty
 TomCat
@@ -17,20 +17,20 @@ Wildfly
 HTML
 CSS
 Jenkin
-JavaScript | ECMAScript | _JS_ | _JS\.
+JavaScript|ECMAScript|JS*|ES5|ES6
 Maven
-_Git_ | _Git\, | _Git\.
+Git*
 Angular
 EJB
-Java EE | J2EE | JEE
+Java EE|J2EE|JEE
 JQuery
 Scrum
 Kanban
-iReport
+JasperReports|iReport
 Selenium
 JUnit
 Mockito
-NodeJS | Node\.JS | _Node_ | _Node\. | _Node\,
+NodeJS|Node.JS|Node JS
 MySQL
 Oracle
 Gradle
@@ -42,31 +42,31 @@ ITIL
 Struts
 JMS
 XML
-XStream
 XSLT
 TDD
 BDD
 Postgre
-AWS | EC2 | _S3_ | _S3\. | _S3\, | Route 53 | SNS | Simple Notification Service | KMS | Key Management Service
+AWS*|EC2*|S3*|Route53|SNS*|Simple Notification Service|SQS*|Simple Queue Service|RDS*
+DynamoDB|Dynamo DB
 Docker
 NoSQL
-Grail
+Grails|Grail
 Groovy
 MongoDB
 PHP
 Python
-C# | \.NET
-SQL Server | MS SQL | MSSQL | Microsoft SQL | SQLServer
+C#|.NET*|Dot Net
+SQL Server|MSSQL|MS SQL|Microsoft SQL|SQLServer
 Kotlin
 Clojure
-_Scala_ | _Scala\, | _Scala\.
-_Ant_ | _Ant\. | _Ant\,
-_React_ | _React\. | _React\,
+Scala*
+Ant*
+React*
 Redux
 Swift
 Android
-_iOS_ | _iOS\. | _iOS\,
-Objective-C | Objective C | ObjectiveC
+iOS*
+Objective-C|Objective C|ObjectiveC
 Perl
 PowerShell
 Delphi
@@ -78,59 +78,55 @@ DevOps
 Elasticsearch
 MariaDB
 Neo4J
-DynamoDB
 Memcached
 VRaptor
-_MEAN_ | _MEAN\. | _MEAN\,
+MEAN*
 JSON
 JAX
 WSDL
-_Java_ | _Java\. | _Java\,
+Java*
 Rabbit
-SQS
 SVN
 Ruby
-_Go_ | _Go\. | _Go\, | Golang | Go\-lang
+Go*|Golang|Go-lang
 CodeIgniter
 Laravel
 Zend
-CakePHP | _Cake_ | _Cake\. | _Cake\,
+CakePHP|Cake*
 Django
 Flask
 JSTL
 CDI
 JAAS
 WebSocket
-Play Framework | Play!
-_ASP_ | _ASP\, | ASP\.NET | ASP NET
+Play Framework|Play!|Framework Play
+ASP*|ASP.NET|ASP NET
 ActiveMQ
-_Camel_ | _Camel\. | _Camel\,
-_C_ | _C\. | _C\, | C\+\+
-_Entity_ | _Entity\, | _Entity.
+C*|C++
+Entity*
 Flexbox
 Bootstrap
 TypeScript
-PWA | Progressive Web App
+PWA|Progressive Web App
 Algoritmo
 Cordova
-TFS | Team Foundation Service
+TFS|Team Foundation Service
 Xamarin
-Azure
 Ionic
-_Unity_ | _Unity\. | _Unity\,
-PL/SQL | PL SQL | PLSQL
-Certificação | Certificado | Certified | Certification
-Machine Learning | Inteligência Artificial | _IA_ | _AI_ | Aprendizado de Máquina
+Unity*
+PL/SQL|PL SQL|PLSQL
+Certificação|Certificado|Certified|Certification
+Machine Learning|Inteligência Artificial| IA | AI |Aprendizado de Máquina
 Arduino
 Primeface
 Facelets
 Backbone
-_Ember_ | _Ember\. | _Ember\, | EmberJS
+Ember*|EmberJS
 Aurelia
 Polymer
 D3
 Highcharts
-_Ext_ | _Ext\. | _Ext\, | ExtJS
+Ext.JS|ExtJS|Ext*
 YUI
 Underscore
 Mustache
@@ -143,32 +139,31 @@ SproutCore
 Mithril
 Polymar
 Meteor
-_Vue_ | _Vue\. | _Vue\,
+Vue*
 Grunt
 Jasmine
-_Sass_ | _Sass\. | _Sass\,
-_Less_ | _Less\. | _Sass\,
+Sass*
+Less*
 Gulp
 WebPack
 Ajax
 Flash
-Photoshop | Photo shop
+PhotoShop|Photo Shop|PS*
 CorelDraw
 Stylus
 Wordpress
 Ilustrator
 Sketch
 Bower
-NGINX
-_SEO_ | _SEO\. | _SEO\,
-_UX_ | _UX\. | _UX\,
-_XP_ | _XP\. | _XP\,
-_Express_
+Nginx
+SEO*
+UX*|User Experience
+Express
 Firebase
 oAuth
 Clipper
-_Rust_ | _Rust\. | _Rust\,
-_R_ | _R\. | _R\,
+Rust*
+R*
 Julia
 Erlang
 Dart
@@ -179,6 +174,20 @@ Haskell
 LISP
 Spark
 Hadoop
-LDAP
-Active Directory | _AD_ | _AD\. | _AD\,
-Japanese
+Active Directory|LDAP|AD*
+JWT
+PyTorch
+TensorFlow|Tensor Flow
+Azure*
+GCP|Google Cloud
+Heroku
+Ocaml
+Kubernetes|Kubernete|K8*
+Cassandra
+Terraform
+Chef*
+Puppet
+Ansible
+SaltStack
+VB.NET|VBNET|VB NET|Visual Basic|VisualBasic
+Kafka
