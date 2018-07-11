@@ -111,6 +111,7 @@ public class GlassdoorScript {
             writer.write("\nTotal:;" + jobCounter);
             writer.write("\nDate:;" + todayDate.toString());
             writer.write("\nLocationID:;" + locationId);
+            writer.write("\nSearch Keyword:;" + searchKeyword);
         } catch (Exception e) {
             exceptions++;
             e.printStackTrace();

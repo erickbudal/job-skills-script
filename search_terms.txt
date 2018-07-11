@@ -61,7 +61,7 @@ Kotlin
 Clojure
 Scala*
 Ant*
-React*
+React*|ReactJS|React.JS
 Redux
 Swift
 Android
@@ -121,7 +121,7 @@ Arduino
 Primeface
 Facelets
 Backbone
-Ember*|EmberJS
+Ember*|EmberJS|Ember.JS
 Aurelia
 Polymer
 D3
@@ -139,7 +139,7 @@ SproutCore
 Mithril
 Polymar
 Meteor
-Vue*
+Vue*|VueJS|Vue.JS
 Grunt
 Jasmine
 Sass*

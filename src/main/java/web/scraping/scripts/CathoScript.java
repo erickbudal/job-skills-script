@@ -102,6 +102,7 @@ public class CathoScript {
             String todayDate = new SimpleDateFormat("dd/MM/yy").format(new Date());
             writer.write("\nTotal:;" + jobCounter);
             writer.write("\nDate:;" + todayDate);
+            writer.write("\nSearch Keyword:;" + searchKeyword);
         } catch (Exception e) {
             e.printStackTrace();
         }
